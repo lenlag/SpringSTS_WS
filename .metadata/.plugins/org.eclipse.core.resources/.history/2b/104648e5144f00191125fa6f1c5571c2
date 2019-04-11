@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<form th:object="${formateur}" method="post" th:action="@{/doCreate/formateur/}">
+
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{creerStagiaire}" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{nom}" />
+					<td th:text="#{prenom}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{nom}" required /></td>
+					<td><input type="text" th:field="*{prenom}" required /></td>
+				</tr>
+				<tr>
+					<td th:text="#{telephone}" />
+					<td th:text="#{mail}" />
+				</tr>
+				<tr>
+					<td><input type="tel" pattern="[0-9]{10}" th:field="*{telephone}" required /></td>
+					<td><input type="email" th:field="*{mail}" required /></td>
+				</tr>
+				<tr>
+					<td th:text="#{identifiant}" />
+					<td th:text="#{motDePasse}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{identifiant}" required /></td>
+					<td><input type="text" th:field="*{motDePasse}" th:placeholder="#{placemdp}" pattern=".{8,}" required  /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

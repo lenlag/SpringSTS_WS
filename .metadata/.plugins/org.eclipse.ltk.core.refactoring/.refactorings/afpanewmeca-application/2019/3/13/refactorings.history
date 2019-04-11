@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;listStagiaire&apos; from expression &apos;ss.findAll()&apos;&#x0D;&#x0A;- Original project: &apos;afpanewmeca-application&apos;&#x0D;&#x0A;- Variable name: &apos;listStagiaire&apos;&#x0D;&#x0A;- Destination method: &apos;fr.afpa.formation.mecanique.controller.UtilisateurController.listUtilisateur()&apos;&#x0D;&#x0A;- Variable expression: &apos;ss.findAll()&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;listStagiaire&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/main\/java&lt;fr.afpa.formation.mecanique.controller{UtilisateurController.java" name="listStagiaire" replace="true" selection="1429 12" stamp="1553521170613" version="1.0"/>
+</session>

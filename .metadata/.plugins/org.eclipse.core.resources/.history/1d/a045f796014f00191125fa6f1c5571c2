@@ -1,0 +1,7 @@
+package fr.afpa.formation.mecanique.persistence.entity.utilisateur;
+
+public enum EnumRoleUtilisateur {
+    LOW ("Langage LOW"),
+    MEDIUM ("Langage MEDIUM"),
+    HIGH ("Langage HIGH") 
+}

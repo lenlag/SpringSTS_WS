@@ -1,0 +1,44 @@
+1548677752759	Delete element
+1548677997640	Rename type 'SpecieController'
+1548678080983	Delete element
+1548678238324	Rename resource 'index.jsp'
+1548679490633	Rename package 'hello'
+1548679511559	Rename type 'GreetingController'
+1548679841982	Delete element
+1548679873289	Delete element
+1548680387693	Rename resource 'index.jsp'
+1548680525221	Delete element
+1548680534573	Delete element
+1548681035123	Rename resource 'index.html'
+1548681093376	Rename resource 'items.html'
+1548688273401	Rename resource 'shoppingCart.jsp'
+1548758377971	Rename type 'CartController'
+1548765913004	Rename type 'ShoppingCartController'
+1548767230359	Rename resource 'shoppingCart.html'
+1548767468406	Delete element
+1548769798931	Delete element
+1548769804702	Delete element
+1548843416789	Move compilation unit
+1548843426322	Rename package 'formation.afpa.fr.sessionclasses'
+1548843433464	Move compilation unit
+1548843484846	Delete element
+1548843776525	Delete element
+1548843852235	Delete element
+1548853926093	Rename resource 'payment.jsp'
+1548854376277	Rename resource 'payment.html'
+1548858420433	Copy compilation unit
+1548858466142	Rename resource 'creditCard.jsp'
+1548858984851	Rename resource 'checkCB.jsp'
+1548863417306	Copy compilation unit
+1548922772589	Copy compilation unit
+1548922780740	Copy compilation unit
+1548922789081	Delete elements
+1548922800131	Copy compilation unit
+1548922806810	Delete element
+1548922810562	Delete element
+1548930980977	Move 'application.properties' to 'messages'
+1548931020164	Copy file
+1548931024743	Delete element
+1548934738417	Copy folder
+1548937292538	Rename resource 'CartEmpty.html'
+1548937789313	Rename resource 'empty-cart-png.png'

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="WebShop-business"/>
+<aop-project name="Ex4-13-13_old"/>
+<aop-project name="CommentMVC-persistence"/>
+<aop-project name="ExBoutiqueJPA"/>
+<aop-project name="Gens-persistence"/>
+<aop-project name="afpanewmeca-application"/>
+<aop-project name="garage-business"/>
+<aop-project name="CommentMVC-WS_REST"/>
+<aop-project name="GensMVC-multi"/>
+<aop-project name="exercice-multi-module"/>
+<aop-project name="CommentMVC-application"/>
+<aop-project name="CommentMVC-business"/>
+<aop-project name="Gens-business"/>
+<aop-project name="WebShop-persistence"/>
+<aop-project name="afpanewmeca-persistence"/>
+<aop-project name="ExSpecieSql"/>
+<aop-project name="Ex2-13-12"/>
+<aop-project name="garage-application"/>
+<aop-project name="Specie-WS_REST"/>
+<aop-project name="Ex4-13-13_hw"/>
+<aop-project name="exercice-application"/>
+<aop-project name="UdemySpring-demo-annotations"/>
+<aop-project name="Ex1-13-12"/>
+<aop-project name="exercice-business"/>
+<aop-project name="UDEMY"/>
+<aop-project name="ExGarageJPA"/>
+<aop-project name="Gens-application"/>
+<aop-project name="demo"/>
+<aop-project name="garage-persistence"/>
+<aop-project name="Site_Specie-access-via-WS"/>
+<aop-project name="ServiceSpecie"/>
+<aop-project name="afpanewmeca-business"/>
+<aop-project name="WebShopMulti"/>
+<aop-project name="exercice-persistence"/>
+<aop-project name="ExCycleRace"/>
+<aop-project name="garage-multi-module"/>
+<aop-project name="CommentMVC-multi"/>
+<aop-project name="MVC_Specie"/>
+<aop-project name="WebShop-application"/>
+</aop-reference-model>

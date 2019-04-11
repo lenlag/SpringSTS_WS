@@ -1,0 +1,6 @@
+BranchProjectTracker__C\:\\Users\\34011-65-01\\Documents\\workspace-sts-3.9.6.RELEASE\\AfpaMeca\\AfpaMecaProject\\.git_develop=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="develop">\r\n<project>/</project>\r\n<project>\\AfpaMeca-application</project>\r\n<project>\\AfpaMeca-business</project>\r\n<project>\\AfpaMeca-persistence</project>\r\n</projects>
+BranchProjectTracker__C\:\\Users\\34011-65-01\\Documents\\workspace-sts-3.9.6.RELEASE\\AfpaMeca\\AfpaMecaProject\\.git_master=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="master">\r\n<project>/</project>\r\n<project>\\AfpaMeca-application</project>\r\n<project>\\AfpaMeca-business</project>\r\n<project>\\AfpaMeca-persistence</project>\r\n</projects>
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>msgs</message>\r\n<message>menage</message>\r\n<message>liste vehicule html + controller. Relocated app.properties file to&\#x0A;application layer + messages</message>\r\n<message>test</message>\r\n</messages>
+eclipse.preferences.version=1
+resourcehistory_graph_split=500,500
+resourcehistory_rev_split=700,300

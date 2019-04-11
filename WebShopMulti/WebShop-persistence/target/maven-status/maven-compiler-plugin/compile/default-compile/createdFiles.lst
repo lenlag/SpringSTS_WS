@@ -1,0 +1,7 @@
+formation\afpa\fr\WebShopApplication.class
+formation\afpa\fr\entity\OrderItem.class
+formation\afpa\fr\entity\BoutiqueItem.class
+formation\afpa\fr\entity\MyOrder.class
+formation\afpa\fr\repository\MyOrderRepository.class
+formation\afpa\fr\repository\BoutiqueItemRepository.class
+formation\afpa\fr\repository\OrderItemRepository.class

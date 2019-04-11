@@ -1,0 +1,49 @@
+package formation.afpa.fr.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import formation.afpa.fr.entity.Comment;
+import formation.afpa.fr.entity.Post;
+import formation.afpa.fr.exception.CommentAlreadyExistsException;
+import formation.afpa.fr.exception.CommentNotValidException;
+import formation.afpa.fr.exception.PostNotFoundException;
+import formation.afpa.fr.service.ServiceComment;
+import formation.afpa.fr.service.ServicePost;
+
+@Controller
+public class CommentController {
+
+	@Autowired
+	private ServiceComment serviceComment;
+	
+	@Autowired
+	private ServicePost servicePost;
+
+	@GetMapping("/add/{id}/comment")
+	public String addComment(@PathVariable(name="id") Long id, Model model) throws PostNotFoundException, CommentNotValidException, CommentAlreadyExistsException {
+		Post post = servicePost.findById(id);
+		Comment comm = new Comment();
+		serviceComment.create(comm);
+		model.addAttribute("mycomment", comm);
+		model.addAttribute("post", post);
+		return "addcomment";
+	}
+
+	@PostMapping("/add/comment")
+	public String addNewComment (Comment comment) throws Exception {
+
+		if(comment.getId() == null) {
+			serviceComment.create(comment);
+		} else if (comment.getId() != null) {
+			serviceComment.update(comment);
+		}
+		
+		return "redirect:/";
+	}
+
+}

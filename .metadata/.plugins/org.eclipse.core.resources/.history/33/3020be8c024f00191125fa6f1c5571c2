@@ -1,0 +1,202 @@
+package fr.afpa.formation.mecanique;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import fr.afpa.formation.mecanique.business.ClientService;
+import fr.afpa.formation.mecanique.business.DevisItemService;
+import fr.afpa.formation.mecanique.business.DevisService;
+import fr.afpa.formation.mecanique.business.FiliereService;
+import fr.afpa.formation.mecanique.business.FournisseurService;
+import fr.afpa.formation.mecanique.business.PieceService;
+import fr.afpa.formation.mecanique.business.TypePaiementService;
+import fr.afpa.formation.mecanique.business.VehiculeService;
+import fr.afpa.formation.mecanique.persistence.entity.or.Devis;
+import fr.afpa.formation.mecanique.persistence.entity.or.DevisItem;
+import fr.afpa.formation.mecanique.persistence.entity.or.Fournisseur;
+import fr.afpa.formation.mecanique.persistence.entity.or.Piece;
+import fr.afpa.formation.mecanique.persistence.entity.typePaiement.TypePaiement;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Client;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.EnumRoleUtilisateur;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Filiere;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Formateur;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Stagiaire;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Vehicule;
+import fr.afpa.formation.mecanique.persistence.repository.FormateurRepository;
+import fr.afpa.formation.mecanique.persistence.repository.StagiaireRepository;
+
+@SpringBootApplication
+public class App implements CommandLineRunner {
+
+	@Autowired
+	VehiculeService vehiculeRepository;
+	@Autowired
+	ClientService clientRepository;
+	@Autowired
+	DevisService devisService;
+	@Autowired
+	PieceService pieceService;
+	@Autowired
+	DevisItemService devisItemService;
+	@Autowired
+	FournisseurService fournisseurService;
+	@Autowired
+	TypePaiementService paiementService;
+	@Autowired
+	StagiaireRepository stagiaireRepository;
+	@Autowired
+	FormateurRepository formateurRepository;
+	@Autowired
+	FiliereService fs;
+
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+	public void run(String... args) throws Exception {
+		initClient();
+		initDevis();
+		initPerson();
+		
+		
+		String enu = EnumRoleUtilisateur.FORMATEUR;
+		System.out.println(enu.name());
+		System.out.println(enu.toString());
+	}
+
+	public void initClient() throws Exception {
+
+		Client c1 = new Client("Gontrand", "Jean-eude", "0605040708", "123@g.com", "ABC123", new Date(), true);
+		Client c2 = new Client("Play", "Henry", "0605040709", "123aze@ff.com", "XYZ987", new Date(), true);
+
+		Vehicule veh1 = new Vehicule("Peugeot", "207CC", 10.000, "GDF54564564PM", "HG54545OP", "AX-777-NG",
+				"25454545454", new Date());
+		Vehicule veh2 = new Vehicule("Mercedes", "A", 50.000, "GHG33544654MP", "AXA54654", "XS-533-NB", "564964513131r",
+				new Date());
+		Vehicule veh3 = new Vehicule("BMW", "X5", 80.000, "XD65469JH", "LF8432", "CD-123-DK", "5465484646854ppl",
+				new Date());
+
+		vehiculeRepository.create(veh1);
+		vehiculeRepository.create(veh2);
+		vehiculeRepository.create(veh3);
+
+		Set<Vehicule> listVehC1 = new HashSet<>();
+		listVehC1.add(veh1);
+		Set<Vehicule> listVehC2 = new HashSet<>();
+		listVehC2.add(veh2);
+		listVehC2.add(veh3);
+
+		c1.setListVehicule(listVehC1);
+		c2.setListVehicule(listVehC2);
+
+		clientRepository.create(c1);
+		clientRepository.create(c2);
+
+	}
+
+	public void initDevis() throws Exception {
+
+		Fournisseur fournisseur1 = new Fournisseur("001", "André SansFrapé");
+		fournisseurService.create(fournisseur1);
+		Fournisseur fournisseur2 = new Fournisseur("001", "Sara Croche");
+		fournisseurService.create(fournisseur2);
+
+		TypePaiement typePaiement1 = new TypePaiement("Chèques");
+		paiementService.createTypePaiement(typePaiement1);
+		TypePaiement typePaiement2 = new TypePaiement("Espèce");
+		paiementService.createTypePaiement(typePaiement2);
+		TypePaiement typePaiement3 = new TypePaiement("Reins/Organes");
+		paiementService.createTypePaiement(typePaiement3);
+
+//******************************************************
+		Piece piece1 = new Piece("0001", "test1", 12.0);
+		Piece piece2 = new Piece("0002", "test2", 13.0);
+		Piece piece3 = new Piece("0003", "test3", 14.0);
+		pieceService.create(piece1);
+		pieceService.create(piece2);
+		pieceService.create(piece3);
+
+		DevisItem devisItem1 = new DevisItem(piece1, 3);
+		devisItemService.create(devisItem1);
+
+		DevisItem devisItem2 = new DevisItem(piece2, 4);
+		devisItemService.create(devisItem2);
+
+		DevisItem devisItem3 = new DevisItem(piece3, 2);
+		devisItemService.create(devisItem3);
+
+		Devis d1 = new Devis(new Date(), "001", new Date(), typePaiement1, fournisseur1);
+
+		Set<DevisItem> devisItems1 = new HashSet<>();
+		devisItems1.add(devisItem1);
+		devisItems1.add(devisItem2);
+		devisItems1.add(devisItem3);
+
+		d1.setListDevisItem(devisItems1);
+		devisService.createDevis(d1);
+//******************************************************
+
+//******************************************************		
+		Piece piece4 = new Piece("0004", "test4", 14.0);
+		Piece piece5 = new Piece("0005", "test5", 15.0);
+		Piece piece6 = new Piece("0006", "test6", 16.0);
+		pieceService.create(piece4);
+		pieceService.create(piece5);
+		pieceService.create(piece6);
+
+		DevisItem devisItem4 = new DevisItem(piece4, 3);
+		devisItemService.create(devisItem4);
+
+		DevisItem devisItem5 = new DevisItem(piece5, 4);
+		devisItemService.create(devisItem5);
+
+		DevisItem devisItem6 = new DevisItem(piece6, 2);
+		devisItemService.create(devisItem6);
+
+		Devis d2 = new Devis(new Date(), "002", new Date(), typePaiement2, fournisseur2);
+
+		Set<DevisItem> devisItems2 = new HashSet<>();
+		devisItems2.add(devisItem4);
+		devisItems2.add(devisItem5);
+		devisItems2.add(devisItem6);
+
+		d2.setListDevisItem(devisItems2);
+		devisService.createDevis(d2);
+//******************************************************
+
+	}
+
+	private void initPerson() {
+		
+		Filiere mma = new Filiere("MMA");
+		Filiere ma = new Filiere("MA");
+		Filiere tea = new Filiere("TEA");
+		
+		fs.createFiliere(mma);
+		fs.createFiliere(ma);
+		fs.createFiliere(tea);
+		
+		Stagiaire stagiaire1 = new Stagiaire("LACOURT", "Camille", "0154789652", "test@test.fr", "clacourt", "****",
+				"stagiaire", new Date(), null, "AFPA2019", mma);
+		Stagiaire stagiaire2 = new Stagiaire("TELLIER", "Sylvie", "0155721652", "test2@test.fr", "stellier", "****XXX",
+				"stagiaire", new Date(2019 - 04 - 1), null, "AFPAFFF2018", ma);
+
+		stagiaireRepository.save(stagiaire1);
+		stagiaireRepository.save(stagiaire2);
+
+		Formateur formateur1 = new Formateur("FOUCAULT", "JP", "0425698745", "test3@test.fr", "jpfoulc", "****XXXYYY",
+				"formateur", new Date(), null);
+		Formateur formateur2 = new Formateur("VIDAL", "JC", "0621198745", "test4@test.fr", "jcvidal", "****XXXYYYZZZ",
+				"formateur", new Date(), null);
+
+		formateurRepository.save(formateur1);
+		formateurRepository.save(formateur2);
+
+	}
+}

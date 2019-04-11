@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"  href="/resources/style/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create or update</title>
+</head>
+<body>
+ 
+	<div th:if="${person.id == null}"><h1 th:text="#{create}"/></div>
+	<div th:if="${person.id != null}"><h1 th:text="#{update}"/></div>
+	
+	<a th:href="@{/list}" style="text-decoration: none; float: right"> <input type="submit" th:value="#{see_list}"></a> 
+	
+	  <form th:object="${person}" th:action="@{/person/create}" method="post">
+		 <input type="text" th:placeholder="#{placeholder_fname}" th:field="*{firstName}"/><br/> <br/>
+		 <input type="text" th:placeholder="#{placeholder_lname}" th:field="*{lastName}"/><br/> <br/>
+	  	 <input type="text" th:placeholder="#{placeholder_age}" th:field="*{age}"/> <br/><br/>
+		 <input type="submit" class="button" th:value="#{save}" />
+		 <input type="hidden" th:field="*{id}"/><br/><br/>
+	</form>	 
+	
+</body>
+</html>

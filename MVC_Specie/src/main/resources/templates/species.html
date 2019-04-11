@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<link rel="stylesheet" th:href="@{/resources/style/main.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script th:with='js=#{js_alert}'>
+
+	function confirmDelete(id) {
+		if(confirm('[[${js}]]')) { // if OK
+			window.location.replace("/delete/" + id);
+		} else { //if not ok
+			return;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2 th:text="#{hello}"></h2>
+	<h2 th:text="#{welcome}"></h2>
+
+	<table class="mainTable">
+		<thead>
+			<tr>
+				<th>Common Name</th>
+				<th>Latin Name</th>	
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="specie : ${listSpecie}">
+				<td th:text="${specie.commonName}" />
+				<td th:text="${specie.latinName}" />
+				<td width="30"><a th:href="@{'/species/' + ${specie.id}}"><img style="width: 20px; height: 20px;" th:src="@{/resources/img/update.png}"/></a></td>
+				<td width="30"><a th:href="'javascript:confirmDelete(' + ${specie.id} + ');'"><img style="width: 20px; height: 20px;" th:src="@{/resources/img/delete.png}"/></a></td>
+			</tr>
+		</tbody>
+
+	</table>
+	<br/>
+	<br/>
+	<input type="submit" id=button th:value="#{add_specie}" onclick="window.location='/species/create'"> 
+	
+</body>
+</html>

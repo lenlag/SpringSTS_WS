@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"  href="/resources/style/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persons</title>
+
+<script th:with='js=#{js_delete}'>
+	function confirmDelete(id) {
+		if(confirm('[[${js}]]')) { // if OK
+			window.location.replace("/delete/" + id);
+		} else { //if not ok
+			return;
+		}
+	}
+</script>
+
+</head>
+<body>
+
+	<h1 th:text="#{list}"/>
+	
+	
+	<table id="table" border="1" float="center">
+		<tr>
+			<th th:text="#{fname}"/>
+			<th th:text="#{lname}"/>
+			<th th:text="#{age}"/>
+		</tr>
+
+		<tr>
+		<tr th:each="person : ${pList}"> <!-- we go through the list List<Person  personList via attribute pList-->
+			<td th:text="${person.firstName}" />
+			<td th:text="${person.lastName}" />
+			<td th:text="${person.age}" />
+			
+			<td width="30"><a th:href="@{'/person/' + ${person.id} + '/update'}"><img style="width: 20px; height: 20px;" th:src="@{/resources/img/update.png}"/></a></td>
+			<td width="30"><a th:href="'javascript:confirmDelete(' + ${person.id} + ');'"><img style="width: 20px; height: 20px;" th:src="@{/resources/img/delete.png}"/></a></td>
+			<input type="hidden" th:value="${person.id}"/>
+			
+		</tr>
+	</table>
+	
+	<br/>
+	<br/>
+	
+	<input type="submit" th:value="#{add}" id="button" onclick="window.location='/'">
+
+</body>
+</html>

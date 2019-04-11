@@ -1,0 +1,17 @@
+package fr.afpa.formation.mecanique.persistence.entity.utilisateur;
+
+public enum EnumRoleUtilisateur {
+	STAGAIRE("Langage LOW"), FORMATEUR("Langage MEDIUM"), REFERENT("Langage HIGH");
+
+	private String name = "";
+
+	// Constructeur
+	EnumRoleUtilisateur(String name) {
+		this.name = name;
+	}
+
+	public String toString() {
+		return name;
+	}
+
+}

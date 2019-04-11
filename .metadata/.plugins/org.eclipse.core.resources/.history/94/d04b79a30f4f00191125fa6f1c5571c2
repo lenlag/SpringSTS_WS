@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+
+<script th:with='js=#{js_delete}'>
+	function confirmDelete(id, role) {
+		if(confirm('[[${js}]]')) { // if OK
+			if(role === 'STAGIAIRE'){
+				window.location.replace("/stagiaire/delete/" + id);	
+			} else if (role === 'FORMATEUR'){
+				window.location.replace("/formateur/delete/" + id);
+			}
+			
+		} else { //if cancel
+			return;
+		}
+	}
+	
+	function searchId() {
+		var c = document.getElementById("searchIdentifiant");
+		var d = document.getElementById("searchCarte");
+		if (c.value == "" && d.value == "") {
+			document.getElementById("searchCarteForm").action = "/utilisateur";
+		} else if (document.getElementById("searchIdentifiant").value != "") {
+			document.getElementById("searchCarteForm").action = "/searchIdentifiant/"
+					+ document.getElementById("searchIdentifiant").value + "/";
+		} else {
+			document.getElementById("searchCarteForm").action = "/searchCarte/"
+					+ document.getElementById("searchCarte").value + "/";
+		}
+		document.getElementById("searchCarteForm").submit();
+	}
+
+	function searchFiliere() {
+		document.getElementById("searchFil").action = "/searchFiliere/"
+				+ document.getElementById("selectFiliere").options[document
+						.getElementById("selectFiliere").selectedIndex].text
+				+ "/";
+		document.getElementById("searchFil").submit();
+	}
+</script>
+
+<body>
+</head>
+
+<ul>
+	<li><a href="index.html">Accueil</a></li>
+	<li><a href="news.asp">Client</a></li>
+	<li><a href="contact.asp">O.R.</a></li>
+	<li><a href="about.asp">Administration</a></li>
+</ul>
+</head>
+<body>
+	<form th:action="@{/create/}" method="get">
+		<input id="addUtilisateur" type="submit" th:value=#{nouveau} />
+	</form>
+	<br />
+
+	<form action="" method="get" id="searchCarteForm">
+		<div th:text="#{rechercheCarte}"></div>
+		<input type="text" id="searchCarte" /> <input type="submit"
+			th:value="#{btnRecherche}" onClick="javascript:searchId();" />
+		<div th:text="#{rechercheId}"></div>
+		<input type="text" id="searchIdentifiant" /> <input type="submit"
+			th:value="#{btnRecherche}" onClick="javascript:searchId();" />
+	</form>
+	<br />
+	<form action="" method="get" id="searchFil">
+		<div th:text="#{rechercheFiliere}"></div>
+		<select id="selectFiliere">
+			<option th:each="filiere : ${listeFiliere}" th:value="${filiere.id}"
+				th:text="${filiere.libelle}" />
+		</select> <input type="submit" th:value="#{btnRecherche}"
+			onClick="javascript:searchFiliere();" />
+	</form>
+
+	<table class="listUtilisateurTable">
+		<thead>
+			<tr>
+				<th th:text="#{nom}" />
+				<th th:text="#{prenom}" />
+				<th th:text="#{telephone}" />
+				<th th:text="#{mail}" />
+				<th th:text="#{role}" />
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${utilisateurs}">
+				<td th:text="${user.nom}" />
+				<td th:text="${user.prenom}" />
+				<td th:text="${user.telephone}" />
+				<td><a th:href="'mailto:'+${user.mail}"><span
+						th:text="${user.mail}"></span></a></td>
+				<td th:text="${user.role}" />
+
+				<!-- 			<td width="30"><a th:href="@{'/person/' + ${user.id} + '/update'}"><img style="width: 20px; height: 20px;" th:src="@{/resources/img/update.png}"/></a></td> -->
+				<td><a th:href="'javascript:confirmDelete(' + ${user.id} + ', ' + '\''+${user.role} +'\''+ ');'" style="text-decoration:none"><input type="submit" th:value="#{delete}"></a></td>
+				<td><a th:href="'javascript:modify(' + ${user.id} + ', ' + '\''+${user.role} +'\''+ ');'" style="text-decoration:none"><input type="submit" th:value="#{modifier}"></a></td>
+				<input type="hidden" th:value="${user.id}" />
+
+			</tr>
+		</tbody>
+	</table>
+	<button class="listDevis" id="backToIndex" type="button">Retour</button>
+
+</body>
+</html>

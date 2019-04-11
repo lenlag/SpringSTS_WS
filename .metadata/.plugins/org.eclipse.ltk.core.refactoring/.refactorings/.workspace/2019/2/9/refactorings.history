@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;Site_Specie-WS&apos; to &apos;Site_Specie-access-via-WS&apos;&#x0D;&#x0A;- Original element: &apos;Site_Specie-WS&apos;&#x0D;&#x0A;- Renamed element: &apos;Site_Specie-WS&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;Site_Specie-WS&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=Site_Specie-WS" name="Site_Specie-access-via-WS" references="true" stamp="1551273775919" version="1.0"/>
+</session>

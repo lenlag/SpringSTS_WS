@@ -1,0 +1,18 @@
+package formation.afpa.fr.repository;
+
+import java.util.List;
+
+import org.jboss.logging.Param;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import formation.afpa.fr.entity.Comment;
+import formation.afpa.fr.entity.Post;
+
+public interface PostRepository extends CrudRepository<Post, Long> {
+
+	@Query("SELECT * FROM comment\r\n" + 
+			"INNER JOIN post_comments ON comment.id=post_comments.comments_id\r\n" + 
+			"WHERE post_comments.post_id= myId")
+	List<Comment> findCommentsByPostId(@Param("myId") Long id);
+}

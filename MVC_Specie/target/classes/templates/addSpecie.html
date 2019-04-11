@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new Specie</title>
+<link rel="stylesheet" href="/resources/style/main.css" />
+</head>
+<body>
+
+	<h2 th:text="#{add_specie}" th:if="${specie.id == null}"/>
+	<h2 th:text="#{update_specie}" th:if="${specie.id != null}"/>
+	
+	<form th:object="${specie}" th:action="@{/species/create}" method="post">
+		 <input type="text" th:placeholder="#{placeholder_common}" th:field="*{commonName}" /><br /> <br />
+		 <input type="text"  th:placeholder="#{placeholder_latin}"	th:field="*{latinName}" /><br /> <br />
+		 <input type="submit" class="button" th:value="#{save}" />
+		 <input type="hidden" th:field="*{id}" /><br /> <br />
+		 
+	</form>
+</body>
+</html>

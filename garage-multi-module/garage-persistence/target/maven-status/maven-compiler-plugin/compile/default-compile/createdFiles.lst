@@ -1,0 +1,4 @@
+fr\afpa\formation\entity\Car.class
+fr\afpa\formation\entity\Vehicle.class
+fr\afpa\formation\repository\VehicleRepository.class
+fr\afpa\formation\repository\CarRepository.class

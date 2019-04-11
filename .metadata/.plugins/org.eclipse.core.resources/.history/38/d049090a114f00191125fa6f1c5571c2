@@ -1,0 +1,158 @@
+package fr.afpa.formation.mecanique.controller;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import fr.afpa.formation.mecanique.business.FiliereService;
+import fr.afpa.formation.mecanique.business.FormateurService;
+import fr.afpa.formation.mecanique.business.ReferentService;
+import fr.afpa.formation.mecanique.business.StagiaireService;
+import fr.afpa.formation.mecanique.business.UtilisateurService;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Formateur;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Stagiaire;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Utilisateur;
+
+@Controller
+public class UtilisateurController {
+	@Autowired
+	StagiaireService ss;
+	@Autowired
+	ReferentService rs;
+	@Autowired
+	FormateurService fs;
+	@Autowired
+	UtilisateurService us;
+	@Autowired
+	FiliereService fils;
+	
+	@GetMapping("/utilisateur")
+	public String listUtilisateur(Model m) {
+		List<Utilisateur> listAll = new ArrayList<>();
+		List<Stagiaire> listStagiaire = ss.findAll();
+		listAll.addAll(listStagiaire);
+		listAll.addAll(rs.findAll());
+		listAll.addAll(fs.findAll());
+		m.addAttribute("utilisateurs", listAll);
+		m.addAttribute("listeFiliere",  fils.findAll());
+		return "listeUtilisateurs";
+	}
+	
+	@GetMapping("/create")
+	public String beforeCreate() {
+		return "choiceUser";
+	}
+	
+	@PostMapping("/utilisateur/create/stagiaire")
+	public String createStagiaire(Model m) {
+		m.addAttribute("stagiaire", new Stagiaire());
+		m.addAttribute("listeFiliere",  fils.findAll());
+		return "createStagiaire";
+	}
+	
+	@PostMapping("/utilisateur/create/formateur")
+	public String createFormateur(Model m) {
+		m.addAttribute("formateur", new Formateur());
+		return "createFormateur";
+	}
+	
+	@PostMapping("doCreate/stagiaire")
+	public String doCreateStagiaire(@Valid Stagiaire s) {
+		s.setInscription(new Date());
+		s.setRole("STAGIAIRE");
+		ss.createStagiare(s);
+		return "redirect:/utilisateur";
+	}
+	
+	@PostMapping("doCreate/formateur")
+	public String doCreateFormateur(@Valid Formateur s) {
+		s.setInscription(new Date());
+		s.setRole("FORMATEUR");
+		fs.createFormateur(s);
+		return "redirect:/utilisateur";
+	}
+	
+	@GetMapping("/searchCarte/{carte}")
+	public String searchCarte(Model m, @PathVariable(name="carte")String carte) {
+		m.addAttribute("stagiaireSearch", ss.findByCarte(carte));
+		return "search";
+	}
+	
+	@GetMapping("/searchIdentifiant/{id}")
+	public String searchIdentifiant(Model m, @PathVariable(name="id")String identifiant) {
+		m.addAttribute("stagiaireSearch",  us.findByIdentifiant(identifiant));
+		return "search";
+	}
+	
+	@GetMapping("/searchFiliere/{fil}")
+	public String searchFiliere(Model m, @PathVariable(name="fil") String f) {
+		m.addAttribute("stagiaireSearch", ss.findByFiliere(f));
+		return "search";
+	}
+	
+	@GetMapping("/stagiaire/delete/{id}")
+	public String deleteStagiaire(@PathVariable("id") long id) {
+		try {
+			ss.deleteById(id);
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
+		return "redirect:/utilisateur";
+	}
+	
+	@GetMapping("/formateur/delete/{id}")
+	public String deleteFormateur(@PathVariable("id") long id) {
+		try {
+			fs.deleteById(id);
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
+		return "redirect:/utilisateur";
+	}
+	
+	@GetMapping("/stagiaire/{id}/update")
+	public String updateStagiaire (@PathVariable("id") String id, Model model) {
+		Stagiaire stagiaire = ss.findById(id);
+		return "createStagiaire";	
+	}
+	
+//	+ POST
+//	public String updateStagiaire(@PathVariable("id") String id, Model model) {
+//		Person p;
+//		try {
+//			p = service.findById(Long.parseLong(id));
+//			model.addAttribute("person", p);
+//		} catch (NumberFormatException | PersonNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return "index"; //do not use neither => return "redirect:/", nor return "/", as it will re-execute the "/" link and person will be new Person() with id null
+//						//return "index" will execute the index.html page that will detect the person's firstName, lastName etc...
+//	}
+//	
+//	
+//	@GetMapping("/formateur/{id}/update")
+//	public String updateFormateur(@PathVariable("id") String id, Model model) {
+//		Person p;
+//		try {
+//			p = service.findById(Long.parseLong(id));
+//			model.addAttribute("person", p);
+//		} catch (NumberFormatException | PersonNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return "index"; //do not use neither => return "redirect:/", nor return "/", as it will re-execute the "/" link and person will be new Person() with id null
+//						//return "index" will execute the index.html page that will detect the person's firstName, lastName etc...
+//	}
+	
+	
+}

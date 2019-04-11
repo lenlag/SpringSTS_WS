@@ -1,0 +1,28 @@
+1548665815317	Rename type 'SpecieAlreadyExistsException'
+1548665822778	Rename type 'SpecieNotAvailableException'
+1548665833873	Rename type 'SpecieNotFoundException'
+1548665845006	Rename type 'SpecieNotValidException'
+1548665931404	Copy compilation units
+1548666002578	Copy compilation units
+1548666012850	Rename type 'OrderDetaiNotFoundException'
+1548666157961	Rename type 'ServiceAnimal'
+1548666169218	Rename type 'ServiceOrder'
+1548666183866	Rename type 'ServicePerson'
+1548666219058	Delete element
+1548666228179	Rename type 'ServiceSpecie'
+1548669966145	Delete element
+1548670052324	Rename compilation unit 'TestServiceSpecie.java'
+1548688400121	Delete element
+1548753080964	Rename type 'ServiceOrderDetail'
+1548756960056	Rename type 'CartService'
+1548763937026	Rename type 'CartService'
+1548765888254	Rename type 'BoutiqueItemModel'
+1548767479308	Delete element
+1548843304978	Copy compilation unit
+1548843322921	Delete element
+1548863515182	Rename type 'ServiceBoutiqueItem'
+1548863529412	Rename type 'ServiceItem'
+1548922833978	Move compilation unit
+1548922839322	Move compilation unit
+1548922845039	Move compilation unit
+1548931045938	Delete element

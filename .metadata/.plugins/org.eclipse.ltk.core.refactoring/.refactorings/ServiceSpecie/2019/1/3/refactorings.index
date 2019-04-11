@@ -1,0 +1,19 @@
+1547625871897	Rename compilation unit 'SpecieService.java'
+1547626576961	Rename type 'Service'
+1547628417715	Delete element
+1547642572981	Delete element
+1547642706510	Copy compilation units
+1547642724186	Rename type 'SpecieAlreadyExistsException2'
+1547642734178	Rename type 'SpecieNotAvailableException2'
+1547642744021	Rename type 'SpecieNotFoundException2'
+1547642752852	Rename type 'SpecieNotValidException2'
+1547642764377	Copy compilation units
+1547642775271	Rename type 'PersonAlreadyExistsException2'
+1547642786183	Rename type 'PersonNotAvailableException2'
+1547642795876	Rename type 'PersonNotFoundException2'
+1547642808332	Rename type 'PersonNotValidException2'
+1547649644066	Move compilation units
+1547651143636	Rename type 'SpecieNameNotFoundException'
+1547651153105	Rename type 'SpecieNameNotValidException'
+1547801195829	Delete element
+1547803252463	Delete element

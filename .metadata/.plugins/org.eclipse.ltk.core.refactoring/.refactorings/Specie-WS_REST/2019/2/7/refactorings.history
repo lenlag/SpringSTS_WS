@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;Specie-WS_REST&apos;&#x0D;&#x0A;- Original project: &apos;Specie-WS_REST&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     messages&#x0D;&#x0A;     static&#x0D;&#x0A;     templates" description="Delete elements" element1="src/main/resources/messages" element2="src/main/resources/templates" element3="src/main/resources/static" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1549895799726" subPackages="false" version="1.0"/>
+</session>

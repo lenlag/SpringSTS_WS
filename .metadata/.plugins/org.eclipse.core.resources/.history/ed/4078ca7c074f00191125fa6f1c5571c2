@@ -1,0 +1,10 @@
+package fr.afpa.formation.mecanique.persistence.entity.utilisateur;
+
+public enum EnumRoleUtilisateur {
+	STAGIAIRE, FORMATEUR, REFERENT;
+
+}
+
+static public void main( ) {
+	
+}

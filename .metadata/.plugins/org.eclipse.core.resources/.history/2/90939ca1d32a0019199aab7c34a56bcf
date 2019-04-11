@@ -1,0 +1,15 @@
+package formation.afpa.fr.repository;
+
+import java.util.List;
+
+import org.jboss.logging.Param;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import formation.afpa.fr.entity.Comment;
+import formation.afpa.fr.entity.Post;
+
+public interface PostRepository extends CrudRepository<Post, Long> {
+
+
+}

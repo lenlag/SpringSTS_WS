@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete 4 resources" deleteContents="true" description="Delete 4 resources" element1="/CommentMVC-application" element2="/CommentMVC-persistence" element3="/CommentMVC-business" element4="/CommentMVC-multi" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1549874308157"/>&#x0A;<refactoring comment="Delete resource &apos;CommentMVC-WS_REST&apos;" deleteContents="false" description="Delete resource &apos;CommentMVC-WS_REST&apos;" element1="/CommentMVC-WS_REST" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1549894657605"/>
+</session>

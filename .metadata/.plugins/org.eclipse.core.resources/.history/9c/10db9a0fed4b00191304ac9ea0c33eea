@@ -1,0 +1,49 @@
+package fr.afpa.formation.mecanique.business;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import formation.afpa.fr.entity.Comment;
+import formation.afpa.fr.exception.CommentNotFoundException;
+import formation.afpa.fr.exception.CommentNotValidException;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Stagiaire;
+import fr.afpa.formation.mecanique.persistence.repository.StagiaireRepository;
+
+@Service
+public class StagiaireService {
+	@Autowired
+	StagiaireRepository fr;
+	
+	public void createStagiare(Stagiaire f) {
+		fr.save(f);
+	}
+	
+	public List<Stagiaire> findAll(){
+		return (List<Stagiaire>) fr.findAll();
+	}
+	
+	public List<Stagiaire> findByCarte(String carte) {
+		return fr.findByCarteAfpa(carte);
+	}
+	
+	public List<Stagiaire> findByFiliere(String f){
+		return fr.findByFiliere(f);
+	}
+	
+	public Stagiaire update(Stagiaire stagiaire) throws Exception {
+		if ((stagiaire == null) || (stagiaire.getId() == null)) {
+			throw new Exception("Le stagiaire est null ou son id est null");
+		}
+
+		Long idAChercher = comm.getId();
+		Optional<Comment> CommentOptional = repo.findById(idAChercher);
+
+		if (!CommentOptional.isPresent()) {
+			throw new CommentNotFoundException();
+		}
+		return repo.save(comm);
+	}
+}
